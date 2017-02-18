@@ -1,0 +1,16 @@
+{% include 'homepage.html' %}
+
+
+{% block content %}
+<div class="container">
+    <h1>New User Registration</h1>
+    <hr>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <center>
+        <button class="btn btn-primary" type="submit">Register</button>
+    </center>
+</form>
+</div>
+{% endblock %}
