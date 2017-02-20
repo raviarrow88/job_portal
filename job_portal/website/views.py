@@ -27,6 +27,6 @@ def user_registration(request):
         return render(request,"register.html",context)
 
 
-# @login_required
-# def login_page(request):
-#     return render(request,"loginpage.html")
+@login_required
+def logged_in(request):
+    return render(request,"logged_in.html")
