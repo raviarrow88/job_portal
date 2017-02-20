@@ -2,15 +2,41 @@
 
 {% block content %}
 <section>
-    <header>
-    <h1>Django Simple Login</h1>
+     <div class="container">
     {% if user.is_authenticated %}
-      Hi {{ user.username }}!
-      <a href="{% url 'logout' %}">logout</a>
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="nav-header">
+            <a class="btn btn-primary pull-right" href="{% url 'logout' %}">logout</a>
+            </div>
+        </nav>
+    <h3> Hello {{ user.username }} </h3>
+        <h4>Welcome to Invaana Jobs Page</h4>
+
+<br><br>
+
+        <div class="row">
+
+            <div class="col-md-10">
+                <h3>Jobs</h3>
+                <hr>
+            {% for ob in jobs %}
+                <div>
+                {{ ob.title }}
+                    <span> <a class="btn btn-info pull-right" href="">View</a></span>
+                </div>
+                <hr>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
     {% else %}
-      <a href="{% url 'login-page' %}">login</a>
+      <a class="btn btn-primary" href="{% url 'login-page' %}">login</a>
     {% endif %}
   </header>
 </section>
 
 {% endblock %}
+
+

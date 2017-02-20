@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect
+from jobs.models import Job,JobRequests
 
 # Create your views here.
 
@@ -29,4 +30,8 @@ def user_registration(request):
 
 @login_required
 def logged_in(request):
-    return render(request,"logged_in.html")
+    jobs =Job.objects.all()
+    context = {
+        'jobs': jobs,
+    }
+    return render(request,"logged_in.html",context)
