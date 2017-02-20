@@ -23,7 +23,7 @@
             {% for ob in jobs %}
                 <div>
                 {{ ob.title }}
-                    <span> <a class="btn btn-info pull-right" href="">View</a></span>
+                    <span> <a  class="btn btn-info pull-right" href="{% url 'job_detail' ob.job_id %}" >View</a></span>
                 </div>
                 <hr>
                 {% endfor %}

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<section>
+<br><br><br>
+<div class="container" >
+    <div class="row">
+   <div class="col-md-8">
+      Title: {{ job.title }}
+       <hr>
+    Company Name: {{ job.company_name}}
+       <hr>
+    Description: {{ job.description }}
+       <hr>
+    Salary: {{ job.salary }}
+       <hr>
+    Posted by: {{ job.created_by }}
+       <hr>
+    Created at: {{ job.created_at }}
+
+
+   </div>
+<a class="btn btn-primary pull-right" href="{% url 'logout' %}">logout</a>
+
+    </div>
+    <div class="text-center">
+    <a class="btn btn-primary " href="?request=yes" method = 'post'>Apply</a>
+    </div>
+
+    {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+</div>
+</section>
+
+
+{% endblock %}

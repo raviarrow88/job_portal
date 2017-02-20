@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 class Job(models.Model):
     job_id = models.AutoField(primary_key=True)
@@ -17,8 +17,8 @@ class Job(models.Model):
 
 
 class JobRequests(models.Model):
-    request_on = models.ManyToManyField(Job,blank=True)
-    request_by = models.CharField(max_length=100,null=True,blank=True)
+    request_on = models.ForeignKey(Job, default=None, null=True,)
+    request_by = models.ForeignKey(User, default=None, null=True, )
     request_at = models.DateTimeField(auto_now=False,auto_now_add=True)
 
     def __str__(self):
