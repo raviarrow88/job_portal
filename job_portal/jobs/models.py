@@ -16,6 +16,7 @@ class Job(models.Model):
         return "%s"% self.title
 
 
+
 class JobRequests(models.Model):
     request_on = models.ForeignKey(Job, default=None, null=True,)
     request_by = models.ForeignKey(User, default=None, null=True, )

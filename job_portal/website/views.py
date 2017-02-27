@@ -10,6 +10,7 @@ from django.shortcuts import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login,logout,authenticate,get_user_model
 from django.urls import reverse
+from django.contrib import messages
 def homepage(request):
      return render(request,"homepage.html")
 
@@ -20,7 +21,13 @@ def user_registration(request):
         form = RegistrationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/')
+            messages.success(request, 'successfully user created')
+
+            return HttpResponseRedirect(reverse('user-registration'))
+        else:
+            form.errors
+            messages.error(request,'Enter data properly')
+
     else:
         form = RegistrationForm()
 
